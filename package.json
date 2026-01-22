@@ -1,0 +1,66 @@
+{
+  "name": "mfe-react-bridge",
+  "version": "0.2.1",
+  "type": "module",
+  "files": [
+    "dist",
+    "react17"
+  ],
+  "main": "./dist/mfe-react-bridge.cjs",
+  "module": "./dist/mfe-react-bridge.js",
+  "types": "./dist/mfe-react-bridge.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/mfe-react-bridge.d.ts",
+      "import": "./dist/mfe-react-bridge.js",
+      "require": "./dist/mfe-react-bridge.cjs",
+      "default": "./dist/mfe-react-bridge.cjs"
+    },
+    "./react17": {
+      "types": "./dist/react17.d.ts",
+      "import": "./dist/react17.js",
+      "require": "./dist/react17.cjs",
+      "default": "./dist/react17.cjs"
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test": "vitest",
+    "preversion": "if ! grep \"## Unreleased\" ./CHANGELOG.md; then echo \"Could not find Unreleased section in CHANGELOG\" && exit 1; fi",
+    "version": "if [ $(git symbolic-ref --short HEAD) = 'main' ]; then sed -i \"s/## Unreleased/## Unreleased\\n\\n## $npm_package_version - $(date +%Y-%m-%d)/gI\" ./CHANGELOG.md && git add ./CHANGELOG.md; fi",
+    "release": "./scripts/release.sh"
+  },
+  "dependencies": {
+    "react-error-boundary": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.2.0",
+    "@types/node": "^22.13.1",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "jsdom": "^26.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^6.0.11",
+    "vite-plugin-dts": "^4.5.0",
+    "vitest": "^3.0.5"
+  },
+  "packageManager": "pnpm@8.15.9+sha512.499434c9d8fdd1a2794ebf4552b3b25c0a633abcee5bb15e7b5de90f32f47b513aca98cd5cfd001c31f0db454bc3804edccd578501e4ca293a6816166bbd9f81"
+}
