@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awocallaghan/mfe-react-bridge"
+    "url": "git+https://github.com/awocallaghan/mfe-react-bridge.git"
   },
   "type": "module",
   "files": [
