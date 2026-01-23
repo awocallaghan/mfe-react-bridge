@@ -25,6 +25,9 @@ jobs:
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - name: Install pnpm
@@ -34,6 +37,4 @@ jobs:
           node-version: 22
           registry-url: https://registry.npmjs.org/
       - run: pnpm install
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: npm publish --provenance --access public
